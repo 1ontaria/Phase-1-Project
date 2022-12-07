@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", () => {
+  alert("Welcome! Please drink responisibly!");
+});
+
 const firstForm = document
   .getElementById("letter")
   .addEventListener("submit", (e) => {
