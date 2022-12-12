@@ -20,27 +20,25 @@ function initialDrink(e) {
       `https://thecocktaildb.com/api/json/v1/1/search.php?f=${e.target[0].value}`
     )
       .then((response) => response.json())
-      .then((response) =>
-        response.drinks.map((drink) => {
+      .then((response) => {
+        const ul = document.createElement("ul");
+        ul.id = "drinks";
+        const drinkDiv = document.getElementById("drinkContainer");
+        drinkDiv.innerHTML = "";
+        response.drinks.forEach((drink) => {
           // const initialList = document.getElementById("more-drinks");
-          const ul = document.createElement("ul");
-          ul.id = "drinks";
-          const drinkDiv = document.getElementById("drinkContainer");
           const li = document.createElement("li");
-          li.id = "different-drinks";
+          li.className = "different-drinks";
           const h2 = document.createElement("h2");
           const img = document.createElement("img");
-          const div = document.createElement("div");
-          div.id = "hover";
-          div.textContent = "drink responsibily";
           img.src = drink.strDrinkThumb;
           h2.textContent = drink.strDrink;
           li.append(h2, img);
           ul.append(li);
-          drinkDiv.append(ul);
-        })
-      );
-    e.target[0].value = "";
+        });
+        drinkDiv.append(ul);
+        e.target[0].value = "";
+      });
   }
 }
 
@@ -62,18 +60,47 @@ function alcoholDrink(e) {
         const li = document.createElement("li");
         li.className = "different-drinks";
         const h2 = document.createElement("h2");
-        const img = document.createElement("img");
-        img.addEventListener("click", () => {
-          console.log("hey!");
-        });
-        img.src = drink.strDrinkThumb;
         h2.textContent = drink.strDrink;
+        const img = document.createElement("img");
+        img.src = drink.strDrinkThumb;
+
+        h2.addEventListener("click", (e) => nameResults(drink.strDrink, e));
+
         li.append(h2, img);
         ul.append(li);
       });
       drinkDiv.append(ul);
       e.target[0].value = "";
     });
+}
+
+function nameResults(drinkName, e) {
+  console.log("event", e);
+  fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`
+  ).then((response) =>
+    response.json().then((response) => {
+      const ul = document.createElement("ul");
+      ul.id = "instructions";
+      const drinkInstructions = document.getElementById("drinkInstructions");
+      drinkInstructions.innerHTML = "";
+      response.drinks.forEach((drink) => {
+        const li = document.createElement("li");
+        li.className = "different-drinks";
+        const h2 = document.createElement("h2");
+        h2.textContent = [
+          drink.strIngredient1,
+          drink.strIngredient2,
+          drink.strIngredient3,
+          drink.strIngredient4,
+          drink.strIngredient5,
+        ];
+        li.append(h2);
+        ul.append(li);
+      });
+      drinkInstructions.append(ul);
+    })
+  );
 }
 
 // function refreshOnSubmit() {
