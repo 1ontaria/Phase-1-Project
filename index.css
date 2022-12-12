@@ -17,4 +17,26 @@ p {
   text-align: center;
   margin-left: 250px;
   margin-right: 250px;
+  font-family: sans-serif;
+  color: gray;
+}
+
+.different-drinks {
+  display: block;
+}
+
+#drinkInstructions {
+  display: inline;
+  list-style-type: none;
+  margin-bottom: 0%;
+  padding-top: 50px;
+  float: right;
+}
+
+h2 {
+  display: block;
+}
+
+#drinks {
+  list-style-type: none;
 }

@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", pageLoadAlert());
 
 const firstForm = document
-  .getElementById("letter")
-  .addEventListener("submit", initialDrink);
+  .getElementById("letter") // grabs the first form box
+  .addEventListener("submit", initialDrink); // adds an event listener to the 'Take a shot!' button, when button is clicked, initialDrink call back function grabs data matching user-entered information in 'Pick any inital' form and appends the information on the page.
 
 const secondForm = document
   .getElementById("alcohol")
@@ -13,24 +13,26 @@ function pageLoadAlert() {
 }
 
 function initialDrink(e) {
+  // creates intial drink function
   {
-    e.preventDefault();
+    e.preventDefault(); // prevents page from reloading when 'Take a shot!' button is pressed
     console.log("working", e);
     fetch(
-      `https://thecocktaildb.com/api/json/v1/1/search.php?f=${e.target[0].value}`
+      `https://thecocktaildb.com/api/json/v1/1/search.php?f=${e.target[0].value}` // fetches API based on what the user enters
     )
-      .then((response) => response.json())
+      .then((response) => response.json()) // first .then() retrieves API data and returns it in JSON
       .then((response) => {
-        const ul = document.createElement("ul");
-        ul.id = "drinks";
-        const drinkDiv = document.getElementById("drinkContainer");
-        drinkDiv.innerHTML = "";
+        // second .then() takes a call back function with the data to apppend to DOM
+        const ul = document.createElement("ul"); // creates unordered list
+        ul.id = "drinks"; // gives unordered list the id of "drinks"
+        const drinkDiv = document.getElementById("drinkContainer"); // grabs the div elements with the id of "drinkContainer"
+        drinkDiv.innerHTML = ""; //
         response.drinks.forEach((drink) => {
-          // const initialList = document.getElementById("more-drinks");
-          const li = document.createElement("li");
-          li.className = "different-drinks";
-          const h2 = document.createElement("h2");
-          h2.textContent = drink.strDrink;
+          //
+          const li = document.createElement("li"); // creates li element for each piece of data returned
+          li.className = "different-drinks"; // give each li element the class name of "different-drinks"
+          const h2 = document.createElement("h2"); // creates a h2 element for each piece of data returned
+          h2.textContent = drink.strDrink; // the h2 name the drink that matches the name in the "drinks" array
 
           h2.addEventListener("click", (e) => nameResults(drink.strDrink, e));
 
@@ -54,24 +56,23 @@ function alcoholDrink(e) {
   )
     .then((resp) => resp.json())
     .then((resp) => {
-      const ul = document.createElement("ul");
-      ul.id = "drinks";
+      const dt = document.createElement("dt");
+      dt.id = "drinks";
       const drinkDiv = document.getElementById("drinkContainer");
       drinkDiv.innerHTML = "";
       resp.drinks.forEach((drink) => {
-        const li = document.createElement("li");
-        li.className = "different-drinks";
+        const dl = document.createElement("dl");
+        dl.className = "different-drinks";
         const h2 = document.createElement("h2");
         h2.textContent = drink.strDrink;
         const img = document.createElement("img");
         img.src = drink.strDrinkThumb;
 
         h2.addEventListener("click", (e) => nameResults(drink.strDrink, e));
-
-        li.append(h2, img);
-        ul.append(li);
+        dl.append(h2, img);
+        dt.append(dl);
       });
-      drinkDiv.append(ul);
+      drinkDiv.append(dt);
       e.target[0].value = "";
     });
 }
