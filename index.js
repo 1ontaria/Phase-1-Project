@@ -47,8 +47,6 @@ function initialDrink(e) {
 }
 
 function alcoholDrink(e) {
-  // const drinkList = document.getElementById("drinks");
-
   e.preventDefault();
   //console.log("working", e);
   fetch(
@@ -79,7 +77,7 @@ function alcoholDrink(e) {
 }
 
 function nameResults(drinkName, e) {
-  // console.log("event", e);
+  console.log("event", e);
   fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`
   ).then((response) =>
@@ -88,17 +86,20 @@ function nameResults(drinkName, e) {
       ul.id = "instructions";
       const drinkInstructions = document.getElementById("drinkInstructions");
       drinkInstructions.innerHTML = "";
-      response.drinks.map((drink) => {
+      response.drinks.forEach((drink) => {
         const li = document.createElement("li");
         li.className = "different-drinks";
-        const h2 = document.createElement("h2");
-        h2.textContent = [
+        const drinkDirections = [
           drink.strIngredient1,
           drink.strIngredient2,
           drink.strIngredient3,
           drink.strIngredient4,
           drink.strIngredient5,
         ];
+        const h2 = document.createElement("h2");
+        h2.textContent = drinkDirections
+          .filter((element) => element != null)
+          .join(", ");
         li.append(h2);
         ul.append(li);
       });
@@ -106,7 +107,3 @@ function nameResults(drinkName, e) {
     })
   );
 }
-
-// function refreshOnSubmit() {
-//   const cheersButton = document.getElementById("drink-up");
-// }

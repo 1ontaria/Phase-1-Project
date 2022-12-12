@@ -3,4 +3,18 @@ body {
 }
 
 img {
+  float: inline-start;
+  height: 250px;
+  width: 30%;
+}
+
+form {
+  text-align: center;
+}
+
+h1,
+p {
+  text-align: center;
+  margin-left: 250px;
+  margin-right: 250px;
 }
