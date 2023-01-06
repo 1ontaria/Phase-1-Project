@@ -11,6 +11,9 @@ const firstForm = document
 function initialShot(e) {
   e.preventDefault();
   console.log("working", e);
+  const ul = document.createElement("ul");
+  ul.id = "drinks";
+  const drinkDiv = document.getElementById("drinkContainer");
   fetch(
     `http://www.thecocktaildb.com/api/json/v1/1/search.php?f=${e.target[0].value}`
   )
@@ -18,8 +21,12 @@ function initialShot(e) {
     .then((response) => {
       response.drinks.forEach((drink) => {
         const li = document.createElement("li");
+        li.textContent = drink.strDrink;
         const img = document.createElement("img");
+        img.src = drink.strDrinkThumb;
+        ul.append(li, img);
       });
       console.log(response);
     });
+  drinkDiv.append(ul);
 }
