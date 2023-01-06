@@ -28,13 +28,13 @@ function initialDrink(e) {
         const drinkDiv = document.getElementById("drinkContainer"); // grabs the div elements with the id of "drinkContainer"
         drinkDiv.innerHTML = ""; //
         response.drinks.forEach((drink) => {
-          //
+          // specifies to grab the array inside of the resonse, and apply the forEach() method to each of the array's elements
           const li = document.createElement("li"); // creates li element for each piece of data returned
           li.className = "different-drinks"; // give each li element the class name of "different-drinks"
           const h2 = document.createElement("h2"); // creates a h2 element for each piece of data returned
           h2.textContent = drink.strDrink; // the h2 name the drink that matches the name in the "drinks" array
 
-          h2.addEventListener("click", (e) => nameResults(drink.strDrink, e));
+          h2.addEventListener("click", (e) => nameResults(drink.strDrink, e)); // adds an event listener that
 
           const img = document.createElement("img");
           img.src = drink.strDrinkThumb;
