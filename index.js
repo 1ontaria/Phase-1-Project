@@ -11,8 +11,8 @@ const firstForm = document
 function initialShot(e) {
   e.preventDefault();
   console.log("working", e);
-  const ul = document.createElement("ul");
-  ul.id = "drinks";
+  const dl = document.createElement("dl");
+  dl.id = "drinks";
   const drinkDiv = document.getElementById("drinkContainer");
   drinkDiv.innerHTML = "";
   fetch(
@@ -21,18 +21,18 @@ function initialShot(e) {
     .then((response) => response.json())
     .then((response) => {
       response.drinks.forEach((drink) => {
-        const li = document.createElement("li");
-        li.className = "different-drinks";
-        const h2 = document.createElement("h2");
-        h2.textContent = drink.strDrink;
-
+        const dt = document.createElement("dt");
+        dt.textContent = drink.strDrink;
+        const dd = document.createElement("dd");
         const img = document.createElement("img");
         img.src = drink.strDrinkThumb;
 
-        li.append(h2, img);
-        ul.append(li);
+        dd.append(img);
+        dt.append(dd);
+        dl.append(dt);
       });
       console.log(response);
     });
-  drinkDiv.append(ul);
+
+  drinkDiv.append(dl);
 }
