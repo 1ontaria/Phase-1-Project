@@ -14,6 +14,7 @@ function initialShot(e) {
   const ul = document.createElement("ul");
   ul.id = "drinks";
   const drinkDiv = document.getElementById("drinkContainer");
+  drinkDiv.innerHTML = "";
   fetch(
     `http://www.thecocktaildb.com/api/json/v1/1/search.php?f=${e.target[0].value}`
   )
