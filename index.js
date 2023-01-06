@@ -22,10 +22,15 @@ function initialShot(e) {
     .then((response) => {
       response.drinks.forEach((drink) => {
         const li = document.createElement("li");
-        li.textContent = drink.strDrink;
+        li.className = "different-drinks";
+        const h2 = document.createElement("h2");
+        h2.textContent = drink.strDrink;
+
         const img = document.createElement("img");
         img.src = drink.strDrinkThumb;
-        ul.append(li, img);
+
+        li.append(h2, img);
+        ul.append(li);
       });
       console.log(response);
     });
