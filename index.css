@@ -1,0 +1,32 @@
+dl {
+  font-family: "Papyrus", fantasy;
+}
+
+p,
+h1 {
+  font-family: "Papyrus", fantasy;
+  text-align: center;
+  padding-left: 80px 0px 80px 0px;
+}
+
+input[type="text"] {
+  width: 25%;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+#drinkContainer {
+  text-align: center;
+}

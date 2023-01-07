@@ -23,6 +23,9 @@ function initialShot(e) {
       response.drinks.forEach((drink) => {
         const dt = document.createElement("dt");
         dt.textContent = drink.strDrink;
+
+        dt.addEventListener("click", showIngredients());
+
         const dd = document.createElement("dd");
         const img = document.createElement("img");
         img.src = drink.strDrinkThumb;
@@ -35,4 +38,8 @@ function initialShot(e) {
     });
 
   drinkDiv.append(dl);
+}
+
+function showIngredients() {
+  fetch(``);
 }
