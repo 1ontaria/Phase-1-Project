@@ -24,7 +24,7 @@ function initialShot(e) {
         const dt = document.createElement("dt");
         dt.textContent = drink.strDrink;
 
-        dt.addEventListener("click", showIngredients());
+        dt.addEventListener("click", (e) => showIngredients(drink.strDrink, e));
 
         const dd = document.createElement("dd");
         const img = document.createElement("img");
@@ -40,6 +40,19 @@ function initialShot(e) {
   drinkDiv.append(dl);
 }
 
-function showIngredients() {
-  fetch(``);
+function showIngredients(drinkName, e) {
+  console.log(e);
+  fetch(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
+    .then((response) => response.json())
+    .then((response) => {
+      response.drinks.forEach((drink) => {
+        const drinkInstructions = [
+          drink.strIngredient1,
+          drink.strIngredient2,
+          drink.strIngredient3,
+          drink.strIngredient4,
+          drink.strIngredient5,
+        ];
+      });
+    });
 }
