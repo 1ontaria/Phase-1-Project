@@ -16,8 +16,7 @@ function initialShot(e) {
   const drinkDiv = document.getElementById("drinkContainer");
   drinkDiv.innerHTML = "";
   fetch(
-    `http://www.thecocktaildb.com/api/json/v1/1/search.php?f=${e.target[0].value}`,
-    { credentials: "omit" }
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${e.target[0].value}`
   )
     .then((response) => response.json())
     .then((response) => {
@@ -30,7 +29,6 @@ function initialShot(e) {
         const img = document.createElement("img");
         img.src = drink.strDrinkThumb;
         const li = document.createElement("li");
-        li.id = "DrinkList";
 
         li.append(h2, img);
         ul.append(li);
@@ -44,9 +42,9 @@ function initialShot(e) {
 function showInstructions(drinkName, e) {
   console.log("yes", e);
   const drinkDiv = document.getElementById("drinkInstructions");
-  // drinkDiv.innerHTML = "";
+  drinkDiv.innerHTML = "";
   const ul = document.createElement("ul");
-  fetch(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
     .then((response) => response.json())
     .then((response) =>
       response.drinks.forEach((drink) => {
