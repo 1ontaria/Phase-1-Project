@@ -48,7 +48,8 @@ function showInstructions(drinkName, e) {
     .then((response) => response.json())
     .then((response) =>
       response.drinks.forEach((drink) => {
-        const li = document.createElement("li");
+        // const li = document.createElement("li");
+        // li.id = "instructions";
         const drinkInstructions = [
           drink.strIngredient1,
           drink.strIngredient2,
@@ -60,9 +61,8 @@ function showInstructions(drinkName, e) {
         p.textContent = drinkInstructions
           .filter((element) => element != null)
           .join(", ");
-        li.append(p);
-        ul.append(li);
+        p.id = "instructions";
+        drinkDiv.append(p);
       })
     );
-  drinkDiv.append(ul);
 }

@@ -2,7 +2,7 @@ dl {
   font-family: "Papyrus", fantasy;
 }
 
-p,
+#intro,
 h1 {
   font-family: "Papyrus", fantasy;
   text-align: center;
@@ -40,4 +40,9 @@ li {
 
 body {
   background-color: rosybrown;
+}
+
+#instructions {
+  padding-top: 50px;
+  text-align: center;
 }
