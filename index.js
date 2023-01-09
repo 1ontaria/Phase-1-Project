@@ -43,7 +43,7 @@ function initialShot(e) {
 
 function showInstructions(drinkName, e) {
   console.log("yes", e);
-  const drinkDiv = document.getElementById("drinkContainer");
+  const drinkDiv = document.getElementById("drinkInstructions");
   // drinkDiv.innerHTML = "";
   const ul = document.createElement("ul");
   fetch(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
