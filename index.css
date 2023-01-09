@@ -30,3 +30,9 @@ img {
 #drinkContainer {
   text-align: center;
 }
+
+#DrinkList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
