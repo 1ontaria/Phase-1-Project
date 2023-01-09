@@ -44,13 +44,13 @@ function initialShot(e) {
 function showInstructions(drinkName, e) {
   console.log("yes", e);
   const drinkDiv = document.getElementById("drinkContainer");
-  drinkDiv.innerHTML = "";
-  const ul = document.getElementById("drinks");
+  // drinkDiv.innerHTML = "";
+  const ul = document.createElement("ul");
   fetch(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
     .then((response) => response.json())
     .then((response) =>
       response.drinks.forEach((drink) => {
-        const li = document.getElementById("DrinkList");
+        const li = document.createElement("li");
         const drinkInstructions = [
           drink.strIngredient1,
           drink.strIngredient2,
