@@ -17,19 +17,20 @@ function initialShot(e) {
   drinkDiv.innerHTML = "";
   fetch(
     `http://www.thecocktaildb.com/api/json/v1/1/search.php?f=${e.target[0].value}`,
-    { credentials: "same-origin" }
+    { credentials: "omit" }
   )
     .then((response) => response.json())
     .then((response) => {
       response.drinks.forEach((drink) => {
         const h2 = document.createElement("h2");
         h2.textContent = drink.strDrink;
-        h2.addEventListener("click", (e) => showIngredients(drink.strDrink, e));
-
-        const li = document.createElement("li");
-        li.id = "DrinkList";
+        h2.addEventListener("click", (e) =>
+          showInstructions(drink.strDrink, e)
+        );
         const img = document.createElement("img");
         img.src = drink.strDrinkThumb;
+        const li = document.createElement("li");
+        li.id = "DrinkList";
 
         li.append(h2, img);
         ul.append(li);
@@ -37,5 +38,33 @@ function initialShot(e) {
       console.log(response);
     });
 
+  drinkDiv.append(ul);
+}
+
+function showInstructions(drinkName, e) {
+  console.log("yes", e);
+  const drinkDiv = document.getElementById("drinkContainer");
+  drinkDiv.innerHTML = "";
+  const ul = document.getElementById("drinks");
+  fetch(`http://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
+    .then((response) => response.json())
+    .then((response) =>
+      response.drinks.forEach((drink) => {
+        const li = document.getElementById("DrinkList");
+        const drinkInstructions = [
+          drink.strIngredient1,
+          drink.strIngredient2,
+          drink.strIngredient3,
+          drink.strIngredient4,
+          drink.strIngredient5,
+        ];
+        const p = document.createElement("p");
+        p.textContent = drinkInstructions
+          .filter((element) => element != null)
+          .join(", ");
+        li.append(p);
+        ul.append(li);
+      })
+    );
   drinkDiv.append(ul);
 }
