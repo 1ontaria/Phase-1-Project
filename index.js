@@ -46,11 +46,26 @@ function initialShot(e) {
 function alcoholType(e) {
   e.preventDefault();
   // console.log("working", e);
+  const ul = document.createElement("ul");
+  const drinkDiv = document.getElementById("drinkContainer");
+  drinkDiv.innerHTML = "";
   fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${e.target[0].value}`
   )
     .then((response) => response.json())
-    .then((response) => console.log(response));
+    .then((response) =>
+      response.drink.forEach((drink) => {
+        const li = document.createElement("li");
+        const h2 = document.createElement("h2");
+        h2.textContent = drink.strDrink;
+        const img = document.createElement("img");
+        img.src = drink.strDrinkThumb;
+
+        li.append(h2, img);
+        ul.append(li);
+      })
+    );
+  drinkDiv.append(ul);
 }
 
 function showInstructions(drinkName, e) {
