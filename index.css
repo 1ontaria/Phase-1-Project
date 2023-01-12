@@ -3,7 +3,8 @@ dl {
 }
 
 #intro,
-h1 {
+h1,
+h2 {
   font-family: "Papyrus", fantasy;
   text-align: center;
   padding-left: 80px 0px 80px 0px;

@@ -7,7 +7,6 @@ function pageLoadAlert() {
 const firstForm = document
   .getElementById("letter")
   .addEventListener("submit", initialShot);
-
 const secondForm = document
   .getElementById("alcohol")
   .addEventListener("submit", alcoholType);
@@ -30,14 +29,16 @@ function initialShot(e) {
         h2.addEventListener("click", (e) =>
           showInstructions(drink.strDrink, e)
         );
+
         const img = document.createElement("img");
         img.src = drink.strDrinkThumb;
+
         const li = document.createElement("li");
 
         li.append(h2, img);
         ul.append(li);
       });
-      console.log(response);
+      // console.log(response);
     });
 
   drinkDiv.append(ul);
@@ -56,6 +57,7 @@ function alcoholType(e) {
     .then((response) =>
       response.drinks.forEach((drink) => {
         const li = document.createElement("li");
+
         const h2 = document.createElement("h2");
         h2.textContent = drink.strDrink;
         h2.addEventListener("click", (e) =>
@@ -72,8 +74,8 @@ function alcoholType(e) {
   drinkDiv.append(ul);
 }
 
-function showInstructions(drinkName, e) {
-  console.log("yes", e);
+function showInstructions(drinkName) {
+  // console.log("yes", e);
   const drinkDiv = document.getElementById("drinkInstructions");
   drinkDiv.innerHTML = "";
   // const ul = document.createElement("ul");
