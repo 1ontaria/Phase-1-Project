@@ -14,7 +14,7 @@ const secondForm = document
 
 function initialShot(e) {
   e.preventDefault();
-  console.log("working", e);
+  // console.log("working", e);
   const ul = document.createElement("ul");
   ul.id = "drinks";
   const drinkDiv = document.getElementById("drinkContainer");
@@ -45,7 +45,12 @@ function initialShot(e) {
 
 function alcoholType(e) {
   e.preventDefault();
-  console.log("working", e);
+  // console.log("working", e);
+  fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${e.target[0].value}`
+  )
+    .then((response) => response.json())
+    .then((response) => console.log(response));
 }
 
 function showInstructions(drinkName, e) {
