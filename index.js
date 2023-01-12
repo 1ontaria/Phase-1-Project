@@ -8,6 +8,10 @@ const firstForm = document
   .getElementById("letter")
   .addEventListener("submit", initialShot);
 
+const secondForm = document
+  .getElementById("alcohol")
+  .addEventListener("submit", alcoholType);
+
 function initialShot(e) {
   e.preventDefault();
   console.log("working", e);
@@ -37,6 +41,11 @@ function initialShot(e) {
     });
 
   drinkDiv.append(ul);
+}
+
+function alcoholType(e) {
+  e.preventDefault();
+  console.log("working", e);
 }
 
 function showInstructions(drinkName, e) {
