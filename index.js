@@ -54,10 +54,14 @@ function alcoholType(e) {
   )
     .then((response) => response.json())
     .then((response) =>
-      response.drink.forEach((drink) => {
+      response.drinks.forEach((drink) => {
         const li = document.createElement("li");
         const h2 = document.createElement("h2");
         h2.textContent = drink.strDrink;
+        h2.addEventListener("click", (e) =>
+          showInstructions(drink.strDrink, e)
+        );
+
         const img = document.createElement("img");
         img.src = drink.strDrinkThumb;
 
@@ -72,7 +76,7 @@ function showInstructions(drinkName, e) {
   console.log("yes", e);
   const drinkDiv = document.getElementById("drinkInstructions");
   drinkDiv.innerHTML = "";
-  const ul = document.createElement("ul");
+  // const ul = document.createElement("ul");
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
     .then((response) => response.json())
     .then((response) =>
