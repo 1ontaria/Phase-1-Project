@@ -25,8 +25,12 @@ Throughout this project, three diffrenent event listeners were used:
 
 To simplify my code, I created separate functions to use as a callback functions for the event listener. For example, when the event listener DOMContentLoaded is triggered, the callback function pageLoadALert is also called and an alert is triggered when the page loads.
 
-```html
-<img src="Untitled.gif" />
+```javascript
+document.addEventListener("DOMContentLoaded", pageLoadAlert());
+
+function pageLoadAlert() {
+  alert(`Welcome! By clicking "OK", you confirm you are over the age of 21.`);
+}
 ```
 
 ## Acknowledgments
