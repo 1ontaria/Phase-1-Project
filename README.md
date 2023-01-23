@@ -33,7 +33,7 @@ function pageLoadAlert() {
 }
 ```
 
-I used "fetch()" to make a GET request to thecocktaildb's API and appened the data needed to the DOM. I created a h2, ul, li, and img, to append to the #drinkContainer div:
+I used "fetch()" to make a GET request to thecocktaildb's API and appened the data needed to the DOM by using the forEach() array method. I created a h2, ul, li, and img, to append to the #drinkContainer div:
 
 ```javascript
 fetch(
