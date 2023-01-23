@@ -1,8 +1,12 @@
+//User should be able to create an alert on page load
+
 document.addEventListener("DOMContentLoaded", pageLoadAlert());
 
 function pageLoadAlert() {
   alert(`Welcome! By clicking "OK", you confirm you are over the age of 21.`);
 }
+
+// - Set up "submit" event listeners on both forms that take callback functions
 
 const firstForm = document
   .getElementById("letter")
@@ -18,14 +22,22 @@ function initialShot(e) {
   ul.id = "drinks";
   const drinkDiv = document.getElementById("drinkContainer");
   drinkDiv.innerHTML = "";
+
+  // use "fetch()" to make a GET request to cocktaildb API
+
   fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${e.target[0].value}`
   )
     .then((response) => response.json())
     .then((response) => {
+      //render the returned data to the DOM
+
       response.drinks.forEach((drink) => {
         const h2 = document.createElement("h2");
         h2.textContent = drink.strDrink;
+
+        //"click" event listener that takes a callback function that displays recipe of drinks when cocktail name is clicked
+
         h2.addEventListener("click", (e) =>
           showInstructions(drink.strDrink, e)
         );
@@ -38,7 +50,6 @@ function initialShot(e) {
         li.append(h2, img);
         ul.append(li);
       });
-      // console.log(response);
     });
 
   drinkDiv.append(ul);
