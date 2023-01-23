@@ -6,7 +6,7 @@ function pageLoadAlert() {
   alert(`Welcome! By clicking "OK", you confirm you are over the age of 21.`);
 }
 
-// - Set up "submit" event listeners on both forms that take callback functions
+// set up "submit" event listeners on both forms that take callback functions
 
 const firstForm = document
   .getElementById("letter")
