@@ -13,8 +13,6 @@ If you're an indecisive person or someone who loves to try new drinks, DrinkSele
 - Use "fetch()" to make a GET request to cocktaildb API and render the returned data to the DOM
 - create an event listener that displays recipe of drinks when cocktail name is clicked
 
-## Functionality
-
 ## Usage
 
 Throughout this project, three diffrenent event listeners were used:
@@ -23,6 +21,12 @@ Throughout this project, three diffrenent event listeners were used:
 .addEventListenter("DOMContentLoaded", () => {})
 .addEventListenter("submit", () => {})
 .addEventListenter("click", () => {})
+```
+
+To simplify my code, I created separate functions to use as a callback functions for the event listener. For example, when the event listener DOMContentLoaded is triggered, the callback function pageLoadALert is also called and an alert is triggered when the page loads.
+
+```html
+<img src="Untitled.gif" />
 ```
 
 ## Acknowledgments
