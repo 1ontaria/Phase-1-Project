@@ -16,8 +16,7 @@ const secondForm = document
   .addEventListener("submit", alcoholType);
 
 function initialShot(e) {
-  e.preventDefault();
-  // console.log("working", e);
+  e.preventDefault(); // prevents page from reloading on submit)
   const ul = document.createElement("ul");
   ul.id = "drinks";
   const drinkDiv = document.getElementById("drinkContainer");

@@ -33,6 +33,32 @@ function pageLoadAlert() {
 }
 ```
 
+I used "fetch()" to make a GET request to thecocktaildb's API and appened the data needed to the DOM. I created a h2, ul, li, and img, to append to the #drinkContainer div:
+
+```javascript
+fetch(
+  `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${e.target[0].value}`
+)
+  .then((response) => response.json())
+  .then((response) =>
+    response.drinks.forEach((drink) => {
+      const li = document.createElement("li");
+
+      const h2 = document.createElement("h2");
+      h2.textContent = drink.strDrink;
+      h2.addEventListener("click", (e) => showInstructions(drink.strDrink, e));
+
+      const img = document.createElement("img");
+      img.src = drink.strDrinkThumb;
+
+      li.append(h2, img);
+      ul.append(li);
+    })
+  );
+```
+
+By using and repeating those steps, I was able to create a single page application that loads drink options based off of an initial or a specific spirit. I was also able to show ingredients of the drinks by clicking the drink name.
+
 ## Acknowledgments
 
 The API, images, and ingredients used used in this project come from https://thecocktaildb.com/.
