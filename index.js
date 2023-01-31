@@ -7,6 +7,7 @@ function pageLoadAlert() {
 const firstForm = document
   .getElementById("letter")
   .addEventListener("submit", initialShot);
+
 const secondForm = document
   .getElementById("alcohol")
   .addEventListener("submit", alcoholType);
@@ -59,22 +60,16 @@ function showInstructions(drinkName) {
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drinkName}`)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
-      response.drinks.forEach((drink) => {
-        const drinkInstructions = [
-          drink.strIngredient1,
-          drink.strIngredient2,
-          drink.strIngredient3,
-          drink.strIngredient4,
-          drink.strIngredient5,
-        ];
-
+      keys = Object.values(response.drinks);
+      keys.forEach((element) => {
+        array = Object.values(element);
+        ingredientArray = array.splice(17, 15);
+        console.log(ingredientArray);
         const p = document.createElement("p");
-        p.textContent = drinkInstructions
+        p.id = "instructions";
+        p.textContent = ingredientArray
           .filter((element) => element != null)
           .join(", ");
-        p.id = "instructions";
-
         drinkDiv.append(p);
       });
     });
